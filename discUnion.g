@@ -1,5 +1,5 @@
 # construct disc 1
-d1:=SimplicialSurfaceByUmbrellaDescriptor([(1,2,3,4,5,6),[1,2],[2,3,7],[7,3,4,8],[8,4,5],[5,6],[6,1],[7],[8]]);
+d1:=SimplicialSurfaceByUmbrellaDescriptor([(1,2,3,4,5,6),[1,2],[2,3,7],(7,3,4,8),[8,4,5],[5,6],[6,1],[7,8]]);
 
 # construct disc 2 from 1 with shift in vertices and edges
 voe1:=VerticesOfEdges(d1);
@@ -101,4 +101,9 @@ for a in [1..Size(discUnions)] do
 	fi;
 od;
 
-
+for u in uniqueDiscs do
+	Print("new union \n");
+	for i in [1..NumberOfFaces(u)] do
+		Print("face ",i, ": ", VerticesOfFace(u, Faces(u)[i]), "\n");
+	od;
+od;
