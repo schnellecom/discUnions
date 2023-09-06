@@ -1,0 +1,130 @@
+    |\^/|     Maple 2020 (X86 64 LINUX)
+._|\|   |/|_. Copyright (c) Maplesoft, a division of Waterloo Maple Inc. 2020
+ \  MAPLE  /  All rights reserved. Maple is a trademark of
+ <____ ____>  Waterloo Maple Inc.
+      |       Type ? for help.
+
+> libname := libname, "/home/data/archiv/daniel/maple/lib10/";
+    libname := "/opt/maple2020/lib", "/home/data/archiv/daniel/maple/lib10/"
+
+> with(LinearAlgebra);
+[&x, Add, Adjoint, BackwardSubstitute, BandMatrix, Basis, BezoutMatrix,
+
+    BidiagonalForm, BilinearForm, CARE, CharacteristicMatrix,
+
+    CharacteristicPolynomial, Column, ColumnDimension, ColumnOperation,
+
+    ColumnSpace, CompanionMatrix, CompressedSparseForm, ConditionNumber,
+
+    ConstantMatrix, ConstantVector, Copy, CreatePermutation, CrossProduct, DARE,
+
+    DeleteColumn, DeleteRow, Determinant, Diagonal, DiagonalMatrix, Dimension,
+
+    Dimensions, DotProduct, EigenConditionNumbers, Eigenvalues, Eigenvectors,
+
+    Equal, ForwardSubstitute, FrobeniusForm, FromCompressedSparseForm,
+
+    FromSplitForm, GaussianElimination, GenerateEquations, GenerateMatrix,
+
+    Generic, GetResultDataType, GetResultShape, GivensRotationMatrix,
+
+    GramSchmidt, HankelMatrix, HermiteForm, HermitianTranspose, HessenbergForm,
+
+    HilbertMatrix, HouseholderMatrix, IdentityMatrix, IntersectionBasis,
+
+    IsDefinite, IsOrthogonal, IsSimilar, IsUnitary, JordanBlockMatrix,
+
+    JordanForm, KroneckerProduct, LA_Main, LUDecomposition, LeastSquares,
+
+    LinearSolve, LyapunovSolve, Map, Map2, MatrixAdd, MatrixExponential,
+
+    MatrixFunction, MatrixInverse, MatrixMatrixMultiply, MatrixNorm,
+
+    MatrixPower, MatrixScalarMultiply, MatrixVectorMultiply, MinimalPolynomial,
+
+    Minor, Modular, Multiply, NoUserValue, Norm, Normalize, NullSpace,
+
+    OuterProductMatrix, Permanent, Pivot, PopovForm, ProjectionMatrix,
+
+    QRDecomposition, RandomMatrix, RandomVector, Rank, RationalCanonicalForm,
+
+    ReducedRowEchelonForm, Row, RowDimension, RowOperation, RowSpace,
+
+    ScalarMatrix, ScalarMultiply, ScalarVector, SchurForm, SingularValues,
+
+    SmithForm, SplitForm, StronglyConnectedBlocks, SubMatrix, SubVector,
+
+    SumBasis, SylvesterMatrix, SylvesterSolve, ToeplitzMatrix, Trace, Transpose,
+
+    TridiagonalForm, UnitVector, VandermondeMatrix, VectorAdd, VectorAngle,
+
+    VectorMatrixMultiply, VectorNorm, VectorScalarMultiply, ZeroMatrix,
+
+    ZeroVector, Zip]
+
+> with(SimplicialSurfaceEmbeddings);
+[AddFace, AddGeodesic, AlignBoundaries, AlignSurfaces, AnimateSurface,
+
+    AttachButterfly, AttachFace, Barycenter, Boundary, CoordinateMatrix,
+
+    CopySurface, Curvature, DefineEmbedding, DevelopGeodesic, DihedralAngle,
+
+    DrawSurface, DuplicateEmbedding, EdgeLengths, EdgeTypes, EdgeVectors, Edges,
+
+    EulerCharacteristic, ExtendGeodesic, FaceCongruenceTypes, Faces,
+
+    FieldExtension, FitButterfly, GeodesicDressWord, GeodesicEdgeList,
+
+    GeodesicIntercepts, GramMatrix, IsConvex, NewSurface, NumberEmbeddedFaces,
+
+    NumberEmbeddedVertices, NumberEmbeddings, NumberGeodesics,
+
+    ParameterConstraints, ParameterValues, Parameters, PasteButterfly,
+
+    PasteFace, PlanarAngle, PresentationFieldExtension,
+
+    RemoveDuplicateEmbeddings, RemoveEdge, RemoveEmbedding, RemoveFace,
+
+    RemoveGeodesic, RemoveVertex, RenameVertices, RepresentationOverRationals,
+
+    RigidMotion, SelectEmbeddings, SimplicialSurfaceEmbeddingsOptions,
+
+    SortEmbeddings, SpecializeParameters, SquareDistance, SubsetEmbeddings,
+
+    SurfaceInfo, VertexDegrees, Vertices, Volume]
+
+
+
+
+> s := NewSurface();
+                                  s := Surface
+
+> AddFace(s, [1, 32, 33]);
+> AttachFace(s, [1, 32], 37);
+> AttachButterfly(s, [33, 32], [32, 37], 24);
+> AttachButterfly(s, [1, 33], [33, 24], 34);
+
+> AttachFace(s, [24, 34], 35);
+> AttachButterfly(s, [35, 24], [24, 37], 27);
+memory used=55.0MB, alloc=108.3MB, time=0.98
+memory used=135.9MB, alloc=148.3MB, time=2.16
+memory used=229.3MB, alloc=148.3MB, time=3.78
+
+> PasteFace(s, [1, 34], [34, 35]);
+> AttachButterfly(s, [35, 1], [1, 37], 4);
+memory used=318.8MB, alloc=144.3MB, time=5.49
+memory used=425.8MB, alloc=144.3MB, time=7.15
+
+> AttachButterfly(s, [35, 4], [4, 37], 36);
+memory used=537.3MB, alloc=179.0MB, time=8.81
+memory used=555.4MB, alloc=180.8MB, time=9.26
+memory used=580.3MB, alloc=179.0MB, time=9.78
+memory used=758.3MB, alloc=210.7MB, time=11.77
+memory used=938.5MB, alloc=220.6MB, time=13.78
+memory used=1085.3MB, alloc=214.8MB, time=15.61
+memory used=1244.1MB, alloc=218.6MB, time=17.61
+memory used=1392.9MB, alloc=214.8MB, time=21.24
+memory used=1542.3MB, alloc=214.8MB, time=22.61
+memory used=1706.3MB, alloc=219.8MB, time=24.75
+memory used=1797.6MB, alloc=219.8MB, time=25.88
+memory used=1861.5MB, alloc=219.8MB, time=26.77
