@@ -1,3 +1,5 @@
+LoadPackage("GAPic");
+
 # construct disc 1
 d1:=SimplicialSurfaceByUmbrellaDescriptor([(1,2,3,4,5,6),[1,2],[2,3,7],(7,3,4,8),[8,4,5],[5,6],[6,1],[7,8]]);
 
@@ -101,9 +103,14 @@ for a in [1..Size(discUnions)] do
 	fi;
 od;
 
-for u in uniqueDiscs do
-	Print("new union \n");
-	for i in [1..NumberOfFaces(u)] do
-		Print("face ",i, ": ", VerticesOfFace(u, Faces(u)[i]), "\n");
-	od;
+# coordinates from the cooresponding maple file
+u1coords:=[[0.0000000000, 0.0000000000, 0.0000000000], [], [], [-0.4127756193, -0.8824799136, -0.2254894815], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [0.5335064560, 0.3080200970, -0.8291607010], [], [], [0.4258038840, -0.3983258119, -1.5287860240], [], [], [], [], [1.0000000000, 0.0000000000, 0.0000000000], [0.5000000000, 0.8660254040, 0.0000000000], [-0.3181013101, 0.7610061464, -0.5654035731], [-0.3385795027, -0.1718327869, -0.9251148060], [-0.1525365230, -1.1259251930, -1.1598395400], [0.5000000000, -0.6559868889, -0.5654035731]];
+
+pr:=SetVertexCoordinates3D(uniqueDiscs[1], coords);
+
+# set colour for one disc different
+for i in [1..NumberOfFaces(d1)] do
+	SetFaceColour(uniqueDiscs[1], i, "0x32cd32", pr);
 od;
+
+DrawComplexToJavaScript(uniqueDiscs[1], "u1", pr);
