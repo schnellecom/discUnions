@@ -41,8 +41,29 @@ for i to maxVert do
 end do;
 coords;
 
+coords := CoordinateMatrix(s, 2, "listlist" = true);
 
+coords := [(-1) $ maxVert];
+for i to maxVert do
+    if i in vertices then coords[i] := evalf(CoordinateMatrix(s, 2, "listlist" = true, "vertices" = [i]))[1]; else coords[i] := []; end if;
+end do;
+coords;
 
+coords := CoordinateMatrix(s, 3, "listlist" = true);
+
+coords := [(-1) $ maxVert];
+for i to maxVert do
+    if i in vertices then coords[i] := evalf(CoordinateMatrix(s, 3, "listlist" = true, "vertices" = [i]))[1]; else coords[i] := []; end if;
+end do;
+coords;
+
+coords := CoordinateMatrix(s, 4, "listlist" = true);
+
+coords := [(-1) $ maxVert];
+for i to maxVert do
+    if i in vertices then coords[i] := evalf(CoordinateMatrix(s, 4, "listlist" = true, "vertices" = [i]))[1]; else coords[i] := []; end if;
+end do;
+coords;
 
 
 
