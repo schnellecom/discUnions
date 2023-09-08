@@ -1,4 +1,4 @@
-LoadPackage("GAPic");
+#LoadPackage("GAPic");
 
 # construct disc 1
 d1:=SimplicialSurfaceByUmbrellaDescriptor([(1,2,3,4,5,6),[1,2],[2,3,7],(7,3,4,8),[8,4,5],[5,6],[6,1],[7,8]]);
@@ -110,7 +110,7 @@ pr1:=SetVertexCoordinates3D(uniqueDiscs[1], u1coords);
 
 # set colour for one disc different
 for i in [1..NumberOfFaces(d1)] do
-	SetFaceColour(uniqueDiscs[1], i, "0x32cd32", pr);
+	SetFaceColour(uniqueDiscs[1], i, "0x32cd32", pr1);
 od;
 
 DrawComplexToJavaScript(uniqueDiscs[1], "u1", pr1);
