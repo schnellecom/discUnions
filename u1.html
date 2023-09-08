@@ -208,7 +208,45 @@
 			-0.3385795027,-0.1718327869,-0.925114806,
 			-0.152536523,-1.125925193,-1.15983954,
 
-			0.533506456,0.308020097,-0.8291607010000001,
+					] ); 
+
+		return vertices1; 
+	}
+
+	geometry1.setAttribute( 'position', new THREE.BufferAttribute( setVertices1(), 3 ) );
+
+	// generate materials in the given color and normals material for the faces 
+
+    const materialNormal1 = new THREE.MeshNormalMaterial({
+        flatShading: true,
+    });
+    materialNormal1.transparent = true;
+    materialNormal1.side = THREE.DoubleSide;
+        
+    const material1 = new THREE.MeshPhongMaterial({
+        color: 0x32cd32,
+        flatShading: true,
+    });
+    material1.transparent = true;
+    material1.side = THREE.DoubleSide;
+        
+	// generate meshes for the faces from the materials with the vertex coordinates from before 
+
+    const mesh1 = new THREE.Mesh( geometry1, material1 );
+    mesh1.castShadow = true;                         
+    mesh1.receiveShadow = true;                      
+                                
+    meshRoot.add(mesh1);
+        
+    const meshNormal1 = new THREE.Mesh( geometry1, materialNormal1 );
+    mesh1.castShadow = true;                         
+    mesh1.receiveShadow = true;                      
+                                
+    normalMeshRoot.add(meshNormal1);
+        	const geometry2 = new THREE.BufferGeometry();
+	function setVertices2(){
+		var vertices2 = new Float32Array( [
+				0.533506456,0.308020097,-0.8291607010000001,
 			1.,0.,0.,
 			0.5,0.8660254040000001,0.,
 
@@ -242,39 +280,39 @@
 
 					] ); 
 
-		return vertices1; 
+		return vertices2; 
 	}
 
-	geometry1.setAttribute( 'position', new THREE.BufferAttribute( setVertices1(), 3 ) );
+	geometry2.setAttribute( 'position', new THREE.BufferAttribute( setVertices2(), 3 ) );
 
 	// generate materials in the given color and normals material for the faces 
 
-    const materialNormal1 = new THREE.MeshNormalMaterial({
+    const materialNormal2 = new THREE.MeshNormalMaterial({
         flatShading: true,
     });
-    materialNormal1.transparent = true;
-    materialNormal1.side = THREE.DoubleSide;
+    materialNormal2.transparent = true;
+    materialNormal2.side = THREE.DoubleSide;
         
-    const material1 = new THREE.MeshPhongMaterial({
+    const material2 = new THREE.MeshPhongMaterial({
         color: 0x049EF4,
         flatShading: true,
     });
-    material1.transparent = true;
-    material1.side = THREE.DoubleSide;
+    material2.transparent = true;
+    material2.side = THREE.DoubleSide;
         
 	// generate meshes for the faces from the materials with the vertex coordinates from before 
 
-    const mesh1 = new THREE.Mesh( geometry1, material1 );
-    mesh1.castShadow = true;                         
-    mesh1.receiveShadow = true;                      
+    const mesh2 = new THREE.Mesh( geometry2, material2 );
+    mesh2.castShadow = true;                         
+    mesh2.receiveShadow = true;                      
                                 
-    meshRoot.add(mesh1);
+    meshRoot.add(mesh2);
         
-    const meshNormal1 = new THREE.Mesh( geometry1, materialNormal1 );
-    mesh1.castShadow = true;                         
-    mesh1.receiveShadow = true;                      
+    const meshNormal2 = new THREE.Mesh( geometry2, materialNormal2 );
+    mesh2.castShadow = true;                         
+    mesh2.receiveShadow = true;                      
                                 
-    normalMeshRoot.add(meshNormal1);
+    normalMeshRoot.add(meshNormal2);
         
 	// generate the edges grouped by color
 		controlFolder.remove(edgeWidthGUI);
