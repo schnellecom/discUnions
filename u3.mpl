@@ -15,12 +15,15 @@ AttachButterfly(s, [1, 34], [34, 24], 35);
 AttachFace(s, [1, 32], 4);
 AttachButterfly(s, [35, 1], [1, 4], 36);
 AttachButterfly(s, [4, 32], [32, 24], 37);
-PasteFace(s, [36, 4], [4, 37]);
-AttachButterfly(s, [36, 35], [35, 24], 27);
+
+AttachButterfly(s, [36, 35], [35, 24], 27, "quiet" = false, "lengths" = [1, 1, 1]);
 
 
-PasteFace(s, [37, 24], [24, 27]);
-PasteFace(s, [37, 36], [36, 37]);
+PasteFace(s, [37, 24], [24, 27], "quiet" = false, "lengths" = [1, 1, 1]);
+PasteFace(s, [36, 4], [4, 37], "quiet" = false, "lengths" = [1, 1, 1]);
+PasteFace(s, [37, 36], [36, 27], "quiet" = false, "lengths" = [1, 1, 1]);
+
+
 
 
 NULL;
@@ -28,7 +31,7 @@ NULL;
 NULL;
 
 SurfaceInfo(s);
-
+NULL;
 coords := CoordinateMatrix(s, 1, "listlist" = true);
 
 EdgeLengths(s);
