@@ -38,34 +38,24 @@ def error():
         error += oneError(i)
     return error
 
-def derivative(i):
-    coordsa = coords[ vertices.index(edges[i][0]) ]
-    coordsb = coords[ vertices.index(edges[i][1]) ]
-    e = np.array([
-        coordsa[0],
-        coordsa[1],
-        coordsa[2],
+def deriveToward(k,t):
+    der = 0
+    for v in vertices:
+        for t in range(dim):
+            for e in edges:
+                if v in e:
+                    # get the other vertex of the currently considered edge
+                    vj = [vertex for vertex in vertices if vertex!=v][0]
 
-        coordsb[0],
-        coordsb[1],
-        coordsb[2],
-    ])
-    der = e*(1/np.linalg.norm(e))
+                    coordsv = coords[ vertices.index(v) ]
+                    coordsvj = coords[ vertices.index(vj) ]
 
-    coords[ vertices.index(edges[i][0]) ][0] = coords[ vertices.index(edges[i][0]) ][0] - lam*der[0]
-    coords[ vertices.index(edges[i][0]) ][1] = coords[ vertices.index(edges[i][0]) ][1] - lam*der[1]
-    coords[ vertices.index(edges[i][0]) ][2] = coords[ vertices.index(edges[i][0]) ][2] - lam*der[2]
+                    norm = np.linalg.norm( coordsv - coordsvj )
 
-    coords[ vertices.index(edges[i][1]) ][0] = coords[ vertices.index(edges[i][1]) ][0] - lam*der[3]
-    coords[ vertices.index(edges[i][1]) ][1] = coords[ vertices.index(edges[i][1]) ][1] - lam*der[4]
-    coords[ vertices.index(edges[i][1]) ][2] = coords[ vertices.index(edges[i][1]) ][2] - lam*der[5]
+                    der += 2*(coordsv[t] - (coordsvj[t])) * ( 1-1/(norm) )
 
-for k in range(rounds):
-    i = random.randint(0, len(edges)-1)
-    derivative(i)
-    if k%1000000 == 0:
-        print("updated with random int",i)
-        print("error", error(),"\n")
+
+
 
 
 print(error())
