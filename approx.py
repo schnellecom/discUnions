@@ -12,8 +12,8 @@ import sympy
 dim = 3
 nVertices = 10
 
-rounds = 100
-lam = 1
+rounds = 10000
+lam = 1/100
 
 vertices = [ 1, 4, 24, 27, 32, 33, 34, 35, 36, 37 ]
 edges = [ [ 1, 35 ], [ 1, 34 ], [ 1, 36 ], [ 1, 4 ], [ 4, 36 ], [ 1, 32 ], [ 4, 32 ], [ 1, 33 ], [ 4, 37 ], [ 24, 32 ], [ 24, 33 ], [ 24, 37 ], [ 24, 27 ], [ 27, 37 ], [ 24, 35 ], [ 27, 35 ], [ 24, 34 ],[ 27, 36 ], [ 32, 33 ], [ 33, 34 ], [ 34, 35 ], [ 35, 36 ], [ 36, 37 ], [ 32, 37 ] ]
@@ -41,28 +41,37 @@ def error():
 def deriveToward(k,t):
     der = 0
     v = vertices[k]
-    for t in range(dim):
-        for e in edges:
-            if v in e:
-                # get the other vertex of the currently considered edge
-                vj = [vertex for vertex in e if vertex!=v][0]
+    for e in edges:
+        if v in e:
+            # get the other vertex of the currently considered edge
+            vj = [vertex for vertex in e if vertex!=v][0]
 
-                coordsv = coords[ vertices.index(v) ]
-                coordsvj = coords[ vertices.index(vj) ]
+            # print("v",v,"vj",vj,"\n")
 
-                norm = np.linalg.norm( coordsv - coordsvj )
+            coordsv = coords[ k ]
+            coordsvj = coords[ vertices.index(vj) ]
 
+            norm = np.linalg.norm( coordsv - coordsvj )
+            # print("v ",coordsv, "\nvj", coordsvj,"\ndiff", coordsv - coordsvj,"\nnorm ",norm)
+
+            # difference between deriving towards the first vertex in the edge or the second
+            if e[0] == v:
                 der += 2*(coordsv[t] - (coordsvj[t])) * ( 1-1/(norm) )
+            else:
+                der -= 2*(coordsv[t] - (coordsvj[t])) * ( 1-1/(norm) )
     return der
+
+
 
 def makeStep():
     for v in range(nVertices):
         for t in range(dim):
-            coords[v][t] += deriveToward(v, t)
+            coords[v][t] += lam*deriveToward(v, t)
 
 for k in range(rounds):
     makeStep()
-    print("error ",error())
+    if k%100 ==0:
+        print("error ",error())
 
 
 # print(error())
