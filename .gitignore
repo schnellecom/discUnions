@@ -8,3 +8,6 @@
 
 # maple files
 *.bak
+
+# vscode
+.vscode/*.*
