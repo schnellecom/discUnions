@@ -12,7 +12,7 @@ import sympy
 dim = 3
 nVertices = 10
 
-rounds = 10000000
+rounds = 100
 lam = 1
 
 vertices = [ 1, 4, 24, 27, 32, 33, 34, 35, 36, 37 ]
@@ -40,22 +40,29 @@ def error():
 
 def deriveToward(k,t):
     der = 0
-    for v in vertices:
+    v = vertices[k]
+    for t in range(dim):
+        for e in edges:
+            if v in e:
+                # get the other vertex of the currently considered edge
+                vj = [vertex for vertex in e if vertex!=v][0]
+
+                coordsv = coords[ vertices.index(v) ]
+                coordsvj = coords[ vertices.index(vj) ]
+
+                norm = np.linalg.norm( coordsv - coordsvj )
+
+                der += 2*(coordsv[t] - (coordsvj[t])) * ( 1-1/(norm) )
+    return der
+
+def makeStep():
+    for v in range(nVertices):
         for t in range(dim):
-            for e in edges:
-                if v in e:
-                    # get the other vertex of the currently considered edge
-                    vj = [vertex for vertex in vertices if vertex!=v][0]
+            coords[v][t] += deriveToward(v, t)
 
-                    coordsv = coords[ vertices.index(v) ]
-                    coordsvj = coords[ vertices.index(vj) ]
-
-                    norm = np.linalg.norm( coordsv - coordsvj )
-
-                    der += 2*(coordsv[t] - (coordsvj[t])) * ( 1-1/(norm) )
+for k in range(rounds):
+    makeStep()
+    print("error ",error())
 
 
-
-
-
-print(error())
+# print(error())
