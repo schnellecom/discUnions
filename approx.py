@@ -1,13 +1,5 @@
-import random
-import sys
 
-import numpy
 import numpy as np
-import pandas as pd
-from matplotlib import pyplot as plt
-from numpy import double
-import sympy
-
 
 dim = 3
 nVertices = 10
