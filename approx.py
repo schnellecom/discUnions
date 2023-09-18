@@ -12,7 +12,7 @@ import sympy
 dim = 3
 nVertices = 10
 
-rounds = 10000
+rounds = 1000000
 lam = 1/100
 
 vertices = [ 1, 4, 24, 27, 32, 33, 34, 35, 36, 37 ]
@@ -46,13 +46,10 @@ def deriveToward(k,t):
             # get the other vertex of the currently considered edge
             vj = [vertex for vertex in e if vertex!=v][0]
 
-            # print("v",v,"vj",vj,"\n")
-
             coordsv = coords[ k ]
             coordsvj = coords[ vertices.index(vj) ]
 
             norm = np.linalg.norm( coordsv - coordsvj )
-            # print("v ",coordsv, "\nvj", coordsvj,"\ndiff", coordsv - coordsvj,"\nnorm ",norm)
 
             # difference between deriving towards the first vertex in the edge or the second
             if e[0] == v:
@@ -63,15 +60,23 @@ def deriveToward(k,t):
 
 
 
-def makeStep():
+def makeStep(k):
     for v in range(nVertices):
         for t in range(dim):
-            coords[v][t] += lam*deriveToward(v, t)
+            coords[v][t] -= lam*(1/k)*deriveToward(v, t)
 
+print("error ",error())
 for k in range(rounds):
-    makeStep()
-    if k%100 ==0:
-        print("error ",error())
+    makeStep(k+1)
+    currError = error()
+    if k%1000 ==0:
+        print("\r round: ",k," error: ",currError, end="")
+    if currError < 1:
+        print("corrds:\n")
+        print(coords)
+        break
+    print("corrds:\n")
+    print(coords)
 
 
 # print(error())
