@@ -74,20 +74,41 @@ rounds = 1000000
 lam = 1/1000
 
 # find good starting point
+print("searching for good starting coordinates")
 coords = np.random.rand(nVertices, dim)
-while error() > 1:
+initialError = error()
+while initialError > 1:
+    print("\rcurrent found error ",initialError, end="")
     coords = np.random.rand(nVertices, dim)
+    initialError = error()
 
 
-print("initial error ",error())
-for k in range(rounds):
-    makeStep(k+1)
-    currError = error()
-    if k%1000 ==0:
+print("\ninitial error ",error())
+
+# version with set rounds
+# for k in range(rounds):
+#     makeStep(k+1)
+#     currError = error()
+#     if k%1000 ==0:
+#         print("\rround: ",k," error: ",currError, end="")
+#     if currError < 0.1:
+#         print("\ncoords:\n")
+#         print(printableCoords())
+#         break
+
+# version with set error
+currError = initialError
+k = 1
+while currError > 0.1:
+    makeStep(k)
+    if k%1000 == 0:
+        currError = error()
         print("\rround: ",k," error: ",currError, end="")
     if currError < 0.1:
         print("\ncoords:\n")
         print(printableCoords())
         break
+    k+=1
+
 print("\ncoords:\n")
 print(printableCoords())
