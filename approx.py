@@ -12,9 +12,6 @@ import sympy
 dim = 3
 nVertices = 10
 
-rounds = 1000000
-lam = 1/100
-
 vertices = [ 1, 4, 24, 27, 32, 33, 34, 35, 36, 37 ]
 edges = [ [ 1, 35 ], [ 1, 34 ], [ 1, 36 ], [ 1, 4 ], [ 4, 36 ], [ 1, 32 ], [ 4, 32 ], [ 1, 33 ], [ 4, 37 ], [ 24, 32 ], [ 24, 33 ], [ 24, 37 ], [ 24, 27 ], [ 27, 37 ], [ 24, 35 ], [ 27, 35 ], [ 24, 34 ],[ 27, 36 ], [ 32, 33 ], [ 33, 34 ], [ 34, 35 ], [ 35, 36 ], [ 36, 37 ], [ 32, 37 ] ]
 
@@ -62,25 +59,35 @@ def makeStep(k):
         for t in range(dim):
             coords[v][t] -= lam*(1/k)*deriveToward(v, t)
 
-# find good starting point
-initial = np.random.rand(nVertices, dim)
-while error() > 2:
-    initial = np.random.rand(nVertices, dim)
+def printableCoords():
+    printableCoords = []
+    for i in range(1, max(vertices)+1):
+        printableCoords.append([])
+    for i in vertices:
+        printableCoords[i-1] = []
+        printableCoords[i-1].append(coords[ vertices.index(i) ][0])
+        printableCoords[i-1].append(coords[ vertices.index(i) ][1])
+        printableCoords[i-1].append(coords[ vertices.index(i) ][2])
+    return repr(printableCoords)
 
-coords = initial
+rounds = 1000000
+lam = 1/1000
+
+# find good starting point
+coords = np.random.rand(nVertices, dim)
+while error() > 1:
+    coords = np.random.rand(nVertices, dim)
+
 
 print("initial error ",error())
 for k in range(rounds):
     makeStep(k+1)
     currError = error()
     if k%1000 ==0:
-        print("\r round: ",k," error: ",currError, end="")
-    if currError < 1:
-        print("corrds:\n")
-        print(coords)
+        print("\rround: ",k," error: ",currError, end="")
+    if currError < 0.1:
+        print("\ncoords:\n")
+        print(printableCoords())
         break
-    print("corrds:\n")
-    print(coords)
-
-
-# print(error())
+print("\ncoords:\n")
+print(printableCoords())
