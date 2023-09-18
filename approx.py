@@ -18,9 +18,6 @@ lam = 1/100
 vertices = [ 1, 4, 24, 27, 32, 33, 34, 35, 36, 37 ]
 edges = [ [ 1, 35 ], [ 1, 34 ], [ 1, 36 ], [ 1, 4 ], [ 4, 36 ], [ 1, 32 ], [ 4, 32 ], [ 1, 33 ], [ 4, 37 ], [ 24, 32 ], [ 24, 33 ], [ 24, 37 ], [ 24, 27 ], [ 27, 37 ], [ 24, 35 ], [ 27, 35 ], [ 24, 34 ],[ 27, 36 ], [ 32, 33 ], [ 33, 34 ], [ 34, 35 ], [ 35, 36 ], [ 36, 37 ], [ 32, 37 ] ]
 
-initial = np.random.rand(nVertices, dim)
-coords = initial
-
 def oneError(i):
     # get the coords of the vertices of given edge
     coordsa = coords[ vertices.index(edges[i][0]) ]
@@ -65,7 +62,14 @@ def makeStep(k):
         for t in range(dim):
             coords[v][t] -= lam*(1/k)*deriveToward(v, t)
 
-print("error ",error())
+# find good starting point
+initial = np.random.rand(nVertices, dim)
+while error() > 2:
+    initial = np.random.rand(nVertices, dim)
+
+coords = initial
+
+print("initial error ",error())
 for k in range(rounds):
     makeStep(k+1)
     currError = error()
