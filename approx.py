@@ -4,12 +4,12 @@ import networkx as nx
 import matplotlib.pyplot as plt
 
 dim = 3
-nVertices = 10
 eps = 0.01
-nIterations = 10
+nIterations = 100
 
 vertices = [ 1, 4, 24, 27, 32, 33, 34, 35, 36, 37 ]
 edges = [ [ 1, 35 ], [ 1, 34 ], [ 1, 36 ], [ 1, 4 ], [ 4, 36 ], [ 1, 32 ], [ 4, 32 ], [ 1, 33 ], [ 4, 37 ], [ 24, 32 ], [ 24, 33 ], [ 24, 37 ], [ 24, 27 ], [ 27, 37 ], [ 24, 35 ], [ 27, 35 ], [ 24, 34 ],[ 27, 36 ], [ 32, 33 ], [ 33, 34 ], [ 34, 35 ], [ 35, 36 ], [ 36, 37 ], [ 32, 37 ] ]
+nVertices = len(vertices)
 
 def niceArray(dict):
     arr = []
