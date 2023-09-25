@@ -378,6 +378,28 @@
 			0.5,-0.67357531420000005,0.54433105390000003,
 			1.5,-0.67357531420000005,0.54433105390000003,
 
+		]);
+		return edges1;
+	}
+
+
+	// generate geometries and lines for the edges 
+
+    const edgeGeometry1 = new THREE.BufferGeometry();
+    edgeGeometry1.setAttribute( 'position', new THREE.BufferAttribute( getEdges1(), 3 ) );
+
+    const edgeLine1 = new THREE.LineSegments( edgeGeometry1, edgeMaterial1 );
+    edgeRoot.add(edgeLine1);
+        
+	// update function to be called every frame 
+
+    const edgeMaterial2 = new THREE.LineBasicMaterial( {
+        color: 0xFF0000,
+        linewidth: 3.,
+    } );
+        
+	function getEdges2(){
+		const edges2 = new Float32Array( [
 			1.,0.5773502693,1.632993162,
 			1.,1.154700539,0.81649658089999999,
 
@@ -397,17 +419,17 @@
 			1.,-0.38490017949999999,1.3608276349999999,
 
 		]);
-		return edges1;
+		return edges2;
 	}
 
 
 	// generate geometries and lines for the edges 
 
-    const edgeGeometry1 = new THREE.BufferGeometry();
-    edgeGeometry1.setAttribute( 'position', new THREE.BufferAttribute( getEdges1(), 3 ) );
+    const edgeGeometry2 = new THREE.BufferGeometry();
+    edgeGeometry2.setAttribute( 'position', new THREE.BufferAttribute( getEdges2(), 3 ) );
 
-    const edgeLine1 = new THREE.LineSegments( edgeGeometry1, edgeMaterial1 );
-    edgeRoot.add(edgeLine1);
+    const edgeLine2 = new THREE.LineSegments( edgeGeometry2, edgeMaterial2 );
+    edgeRoot.add(edgeLine2);
         
 	// update function to be called every frame 
 	// generate labels and spheres for the vertices
