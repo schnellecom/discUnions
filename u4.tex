@@ -259,10 +259,13 @@
 
 \usepackage{hyperref}
 
+\definecolor{049EF4}{HTML}{049EF4}
+\definecolor{b22222}{HTML}{b22222}
+\definecolor{32cd32}{HTML}{32cd32}
 
 \begin{document}
 \begin{center}
-    u4   
+    u1
 \end{center}
 
 
@@ -288,37 +291,37 @@
 
 
 % Fill in the faces
-\fill[face]  (V37_1) -- (V36_1) -- (V1_1) -- cycle;
+\fill[face=b22222]  (V37_1) -- (V36_1) -- (V1_1) -- cycle;
 \node[faceLabel] at (barycentric cs:V37_1=1,V36_1=1,V1_1=1) {$1$};
-\fill[face]  (V1_1) -- (V32_1) -- (V37_1) -- cycle;
+\fill[face=b22222]  (V1_1) -- (V32_1) -- (V37_1) -- cycle;
 \node[faceLabel] at (barycentric cs:V1_1=1,V32_1=1,V37_1=1) {$2$};
-\fill[face]  (V1_1) -- (V4_1) -- (V32_1) -- cycle;
+\fill[face=b22222]  (V1_1) -- (V4_1) -- (V32_1) -- cycle;
 \node[faceLabel] at (barycentric cs:V1_1=1,V4_1=1,V32_1=1) {$3$};
-\fill[face]  (V1_1) -- (V34_1) -- (V4_1) -- cycle;
+\fill[face=b22222]  (V1_1) -- (V34_1) -- (V4_1) -- cycle;
 \node[faceLabel] at (barycentric cs:V1_1=1,V34_1=1,V4_1=1) {$4$};
-\fill[face]  (V1_1) -- (V35_1) -- (V34_1) -- cycle;
+\fill[face=b22222]  (V1_1) -- (V35_1) -- (V34_1) -- cycle;
 \node[faceLabel] at (barycentric cs:V1_1=1,V35_1=1,V34_1=1) {$5$};
-\fill[face]  (V36_1) -- (V35_1) -- (V1_1) -- cycle;
+\fill[face=b22222]  (V36_1) -- (V35_1) -- (V1_1) -- cycle;
 \node[faceLabel] at (barycentric cs:V36_1=1,V35_1=1,V1_1=1) {$6$};
-\fill[face]  (V4_1) -- (V33_1) -- (V32_1) -- cycle;
+\fill[face=b22222]  (V4_1) -- (V33_1) -- (V32_1) -- cycle;
 \node[faceLabel] at (barycentric cs:V4_1=1,V33_1=1,V32_1=1) {$7$};
-\fill[face]  (V34_1) -- (V33_2) -- (V4_1) -- cycle;
+\fill[face=b22222]  (V34_1) -- (V33_2) -- (V4_1) -- cycle;
 \node[faceLabel] at (barycentric cs:V34_1=1,V33_2=1,V4_1=1) {$8$};
-\fill[face]  (V33_1) -- (V24_1) -- (V32_1) -- cycle;
+\fill[face=049EF4]  (V33_1) -- (V24_1) -- (V32_1) -- cycle;
 \node[faceLabel] at (barycentric cs:V33_1=1,V24_1=1,V32_1=1) {$16$};
-\fill[face]  (V24_1) -- (V37_2) -- (V32_1) -- cycle;
+\fill[face=049EF4]  (V24_1) -- (V37_2) -- (V32_1) -- cycle;
 \node[faceLabel] at (barycentric cs:V24_1=1,V37_2=1,V32_1=1) {$17$};
-\fill[face]  (V24_1) -- (V27_1) -- (V37_2) -- cycle;
+\fill[face=049EF4]  (V24_1) -- (V27_1) -- (V37_2) -- cycle;
 \node[faceLabel] at (barycentric cs:V24_1=1,V27_1=1,V37_2=1) {$18$};
-\fill[face]  (V24_1) -- (V35_2) -- (V27_1) -- cycle;
+\fill[face=049EF4]  (V24_1) -- (V35_2) -- (V27_1) -- cycle;
 \node[faceLabel] at (barycentric cs:V24_1=1,V35_2=1,V27_1=1) {$19$};
-\fill[face]  (V24_1) -- (V34_2) -- (V35_2) -- cycle;
+\fill[face=049EF4]  (V24_1) -- (V34_2) -- (V35_2) -- cycle;
 \node[faceLabel] at (barycentric cs:V24_1=1,V34_2=1,V35_2=1) {$20$};
-\fill[face]  (V33_1) -- (V34_2) -- (V24_1) -- cycle;
+\fill[face=049EF4]  (V33_1) -- (V34_2) -- (V24_1) -- cycle;
 \node[faceLabel] at (barycentric cs:V33_1=1,V34_2=1,V24_1=1) {$21$};
-\fill[face]  (V27_1) -- (V36_2) -- (V37_2) -- cycle;
+\fill[face=049EF4]  (V27_1) -- (V36_2) -- (V37_2) -- cycle;
 \node[faceLabel] at (barycentric cs:V27_1=1,V36_2=1,V37_2=1) {$22$};
-\fill[face]  (V35_2) -- (V36_3) -- (V27_1) -- cycle;
+\fill[face=049EF4]  (V35_2) -- (V36_3) -- (V27_1) -- cycle;
 \node[faceLabel] at (barycentric cs:V35_2=1,V36_3=1,V27_1=1) {$23$};
 
 
@@ -343,17 +346,17 @@
 \draw[edge] (V24_1) -- node[edgeLabel] {$44$} (V34_2);
 \draw[edge] (V36_2) -- node[edgeLabel] {$45$} (V27_1);
 \draw[edge] (V27_1) -- node[edgeLabel] {$45$} (V36_3);
-\draw[edge] (V32_1) -- node[edgeLabel] {$46$} (V33_1);
-\draw[edge] (V33_2) -- node[edgeLabel] {$47$} (V34_1);
-\draw[edge] (V34_2) -- node[edgeLabel] {$47$} (V33_1);
-\draw[edge] (V34_1) -- node[edgeLabel] {$48$} (V35_1);
-\draw[edge] (V35_2) -- node[edgeLabel] {$48$} (V34_2);
-\draw[edge] (V35_1) -- node[edgeLabel] {$49$} (V36_1);
-\draw[edge] (V36_3) -- node[edgeLabel] {$49$} (V35_2);
-\draw[edge] (V36_1) -- node[edgeLabel] {$50$} (V37_1);
-\draw[edge] (V37_2) -- node[edgeLabel] {$50$} (V36_2);
-\draw[edge] (V37_1) -- node[edgeLabel] {$51$} (V32_1);
-\draw[edge] (V32_1) -- node[edgeLabel] {$51$} (V37_2);
+\draw[edge=32cd32] (V32_1) -- node[edgeLabel] {$46$} (V33_1);
+\draw[edge=32cd32] (V33_2) -- node[edgeLabel] {$47$} (V34_1);
+\draw[edge=32cd32] (V34_2) -- node[edgeLabel] {$47$} (V33_1);
+\draw[edge=32cd32] (V34_1) -- node[edgeLabel] {$48$} (V35_1);
+\draw[edge=32cd32] (V35_2) -- node[edgeLabel] {$48$} (V34_2);
+\draw[edge=32cd32] (V35_1) -- node[edgeLabel] {$49$} (V36_1);
+\draw[edge=32cd32] (V36_3) -- node[edgeLabel] {$49$} (V35_2);
+\draw[edge=32cd32] (V36_1) -- node[edgeLabel] {$50$} (V37_1);
+\draw[edge=32cd32] (V37_2) -- node[edgeLabel] {$50$} (V36_2);
+\draw[edge=32cd32] (V37_1) -- node[edgeLabel] {$51$} (V32_1);
+\draw[edge=32cd32] (V32_1) -- node[edgeLabel] {$51$} (V37_2);
 
 
 % Draw the vertices
