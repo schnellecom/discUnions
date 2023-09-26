@@ -203,12 +203,12 @@ u3coords:=
 
 
 pr3t := rec(faceColours:=[], edgeColours:=[]);
-pr3:=SetVertexCoordinates3DNC(uniqueDiscs[3], u1coords, rec());
+pr3:=SetVertexCoordinates3DNC(uniqueDiscs[3], u3coords, rec());
 
 # set colour for one disc different
 for i in Faces(uniqueDiscs[3]) do
 	if i in Faces(d1) then
-		SetFaceColour(uniqueDiscs[3], i, redHex, pr1);
+		SetFaceColour(uniqueDiscs[3], i, redHex, pr3);
 		pr3t.faceColours[i] := redTex;
 	else
 		pr3t.faceColours[i] := blueTex;
