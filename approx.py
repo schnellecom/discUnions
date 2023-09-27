@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 dim = 3
 eps = 0.01
-nIterations = 100
+nIterations = 10
 
 vertices = [ 1, 4, 24, 27, 32, 33, 34, 35, 36, 37 ]
 edges = [ [ 1, 35 ], [ 1, 34 ], [ 1, 36 ], [ 1, 4 ], [ 4, 36 ], [ 1, 32 ], [ 4, 32 ], [ 1, 33 ], [ 4, 37 ], [ 24, 32 ], [ 24, 33 ], [ 24, 37 ], [ 24, 27 ], [ 27, 37 ], [ 24, 35 ], [ 27, 35 ], [ 24, 34 ],[ 27, 36 ], [ 32, 33 ], [ 33, 34 ], [ 34, 35 ], [ 35, 36 ], [ 36, 37 ], [ 32, 37 ] ]
@@ -55,6 +55,8 @@ currError = 1
 minError = 1
 iter = 1
 bestPos = []
+errorArr = []
+
 while currError > 0.01 and iter < nIterations:
     pos = nx.spring_layout(G, k=1, dim=3, threshold=1e-16, iterations=10000)
     currError = error(errorArray(pos))
@@ -64,5 +66,9 @@ while currError > 0.01 and iter < nIterations:
     print("\riter: ",iter," min error: ",minError, "current error: ",currError,end="")
     iter += 1
 print("\nbest found error: ",minError)
+for i in range(len(edges)):
+    errorArr.append(oneError(errorArray(bestPos), i))
 
 print("\n\n",niceArray(bestPos))
+print("\nerror for edges is: ", errorArr)
+
