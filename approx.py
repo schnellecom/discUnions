@@ -67,7 +67,7 @@ while currError > 0.01 and iter < nIterations:
     iter += 1
 print("\nbest found error: ",minError)
 for i in range(len(edges)):
-    errorArr.append(oneError(errorArray(bestPos), i))
+    errorArr.append(np.sqrt(oneError(errorArray(bestPos), i)))
 
 print("\n\n",niceArray(bestPos))
 print("\nerror for edges is: ", errorArr)
