@@ -13,7 +13,7 @@ nVertices = len(vertices)
 
 def niceArray(dict):
     arr = []
-    keys = dict.keys()
+    keys = vertices
     for i in range(max(keys)+1):
         if i in keys:
             arr.append([])
