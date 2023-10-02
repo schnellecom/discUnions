@@ -58,7 +58,7 @@ bestPos = []
 errorArr = []
 
 while currError > 0.001 and iter <= nIterations:
-    pos = nx.spring_layout(G, k=1, dim=3, threshold=1e-8, iterations=10000000)
+    pos = nx.spring_layout(G, k=1, dim=3, threshold=1e-8, iterations=100000000)
     currError = error(errorArray(pos))
     if minError > currError:
         minError = currError
